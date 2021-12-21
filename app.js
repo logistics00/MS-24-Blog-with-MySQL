@@ -6,6 +6,10 @@ const blogRoutes = require('./routes/blog');
 
 const app = express();
 
+// call for port
+const { port } = require('./config');
+console.log(port);
+
 // Activate EJS view engine
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
@@ -22,4 +26,6 @@ app.use(function (error, req, res, next) {
   res.status(500).render('500');
 });
 
-app.listen(3000);
+app.listen(process.env.port, () => {
+  console.log(`NodeJS is started on port ${port}`);
+});
