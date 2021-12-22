@@ -8,7 +8,6 @@ const app = express();
 
 // call for port
 const { port } = require('./config');
-console.log(port);
 
 // Activate EJS view engine
 app.set('view engine', 'ejs');
