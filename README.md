@@ -6,3 +6,5 @@ Course: https://www.udemy.com/course/100-days-of-code-web-development-bootcamp/l
 
 MS-23: SQL-Databases - Introduction & Core Concepts
 MS-24: Using MySQL in NodeJS & Express Websites
+
+REMARK: Commits 427-430 must be 428-431
