@@ -88,6 +88,15 @@ router.post('/posts/:id/edit', async function (req, res) {
   res.redirect('/posts');
 });
 
+// Delete an existing post
+router.post('/posts/:id/delete', async function (req, res) {
+  const query = `
+    DELETE FROM posts WHERE id = ?
+  `;
+  await db.query(query, [req.params.id]);
+  res.redirect('/posts');
+});
+
 // Display input-screen for adding a new post
 router.get('/new-post', async function (req, res) {
   const [authors] = await db.query('SELECT * FROM authors');
