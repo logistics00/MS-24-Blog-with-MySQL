@@ -72,6 +72,22 @@ router.get('/posts/:id/edit', async function (req, res) {
   res.render('update-post', { post: posts[0] });
 });
 
+// Update an existing post
+router.post('/posts/:id/edit', async function (req, res) {
+  const data = [req.body.title, req.body.summary, req.body.content];
+  const query = `
+    UPDATE posts SET title = ?, summary = ?, body = ?
+    WHERE id = ?
+  `;
+  await db.query(query, [
+    req.body.title,
+    req.body.summary,
+    req.body.content,
+    req.params.id,
+  ]);
+  res.redirect('/posts');
+});
+
 // Display input-screen for adding a new post
 router.get('/new-post', async function (req, res) {
   const [authors] = await db.query('SELECT * FROM authors');
