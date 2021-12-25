@@ -8,6 +8,7 @@ router.get('/', function (req, res) {
   res.redirect('/posts');
 });
 
+// Add a new post
 router.post('/posts', async function (req, res) {
   const data = [
     req.body.title,
@@ -22,6 +23,7 @@ router.post('/posts', async function (req, res) {
   res.redirect('/posts');
 });
 
+// Display all posts
 router.get('/posts', async function (req, res) {
   const query = `
     SELECT posts.*, authors.name AS authors_name FROM posts
@@ -31,6 +33,7 @@ router.get('/posts', async function (req, res) {
   res.render('posts-list', { posts: posts });
 });
 
+// Display post-details
 router.get('/posts/:id', async function (req, res) {
   const query = `
     SELECT posts.*, authors.name AS authors_name, authors.email AS author_email FROM posts
@@ -56,6 +59,20 @@ router.get('/posts/:id', async function (req, res) {
   res.render('post-detail', { post: postData });
 });
 
+// Display input-screen for updating an existing post
+router.get('/posts/:id/edit', async function (req, res) {
+  const query = `
+    SELECT * FROM posts WHERE id = ?
+  `;
+  const [posts] = await db.query(query, [req.params.id]);
+  if (!posts || posts.length === 0) {
+    return res.status(404).render('404');
+  }
+
+  res.render('update-post', { post: posts[0] });
+});
+
+// Display input-screen for adding a new post
 router.get('/new-post', async function (req, res) {
   const [authors] = await db.query('SELECT * FROM authors');
   res.render('create-post', { authors: authors });
