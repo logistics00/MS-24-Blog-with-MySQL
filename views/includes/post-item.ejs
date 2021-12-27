@@ -1,17 +1,18 @@
 <article class="post-item">
-  <h2>
+  <h3>
+    <%= post.date.toLocaleDateString('nl-NL', { year: 'numeric' , month: 'numeric' , day: 'numeric' }) %>
+  </h3>
+  <h3>
     <%= post.title %>
-  </h2>
-  <p class="post-item-author">By <%= post.authors_name %>
-  </p>
-  <p>
+  </h3>
+  <h3>
     <%= post.summary %>
-  </p>
+  </h3>
   <div class="post-actions">
     <form action="/posts/<%= post.id %>/delete" method="POST">
-      <button class="btn btn-alt">Delete Post</button>
+      <button class="btn btn-alt">Verwijder</button>
     </form>
-    <a href="/posts/<%= post.id %>/edit">Edit Post</a>
-    <a class="btn" href="/posts/<%= post.id %>">View Post</a>
+    <a href="/posts/<%= post.id %>/edit">Wijzig</a>
+    <a class="btn" href="/posts/<%= post.id %>">Details</a>
   </div>
 </article>

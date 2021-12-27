@@ -9,22 +9,22 @@
 <body>
   <%- include('includes/header') %>
     <main>
-      <h1>Add a new post</h1>
+      <h1>Maak een nieuwe notitie</h1>
       <form action="/posts" method="POST">
         <div class="form-control">
-          <label for="title">Title</label>
+          <label for="title">Titel</label>
           <input type="text" id="title" name="title" required>
         </div>
         <div class="form-control">
-          <label for="summary">Summary</label>
+          <label for="summary">Samenvatting</label>
           <input type="text" id="summary" name="summary" required maxlength="255">
         </div>
         <div class="form-control">
-          <label for="content">Post Content</label>
+          <label for="content">Inhoud</label>
           <textarea id="content" name="content" required rows="5"></textarea>
         </div>
         <div class="form-control">
-          <label for="author">Select Author</label>
+          <label for="author">Selecteer Schrijver</label>
           <select id="author" name="author">
             <% for (const author of authors) { %>
               <option value="<%= author.id %>">
@@ -33,7 +33,7 @@
               <% } %>
           </select>
         </div>
-        <button class="btn">Add Post</button>
+        <button class="btn">Opslaan</button>
       </form>
     </main>
 </body>

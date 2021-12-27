@@ -9,7 +9,20 @@
 <body>
   <%- include('includes/header') %>
     <main id="all-posts">
-      <h1>All Posts</h1>
+      <h1>Alle Notities</h1>
+      <article id="posts-header">
+        <h3>
+          Ingevoerd
+        </h3>
+        <h3>
+          Titel
+        </h3>
+        <h3>
+          Samenvatting
+        </h3>
+        <h3>
+        </h3>
+      </article>
       <% if (!posts || posts.length===0) { %>
         <p>No posts found - maybe start creating some?</p>
         <a class='btn' href='/new-post'>Create a new post</a>
