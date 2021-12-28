@@ -1,6 +1,7 @@
 <article class="post-item">
   <h3>
-    <%= post.date.toLocaleDateString('nl-NL', { year: 'numeric' , month: 'numeric' , day: 'numeric' }) %>
+    Van <%= post.date.toLocaleDateString('nl-NL', { year: 'numeric' , month: 'numeric' , day: 'numeric' }) %>
+      tot <%= post.date_ready %>
   </h3>
   <h3>
     <%= post.title %>

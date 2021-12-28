@@ -12,12 +12,13 @@ router.get('/', function (req, res) {
 router.post('/posts', async function (req, res) {
   const data = [
     req.body.title,
+    req.body.date_ready,
     req.body.summary,
     req.body.content,
     req.body.author,
   ];
   await db.query(
-    'INSERT INTO posts (title, summary, body, author_id) VALUES(?)',
+    'INSERT INTO posts (title, date_ready, summary, body, author_id) VALUES(?)',
     [data]
   );
   res.redirect('/posts');
@@ -76,11 +77,12 @@ router.get('/posts/:id/edit', async function (req, res) {
 router.post('/posts/:id/edit', async function (req, res) {
   const data = [req.body.title, req.body.summary, req.body.content];
   const query = `
-    UPDATE posts SET title = ?, summary = ?, body = ?
+    UPDATE posts SET title = ?, date_ready = ?, summary = ?, body = ?
     WHERE id = ?
   `;
   await db.query(query, [
     req.body.title,
+    req.body.date_ready,
     req.body.summary,
     req.body.content,
     req.params.id,

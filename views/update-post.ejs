@@ -16,6 +16,11 @@
           <input type="text" id="title" value="<%= post.title %>" name="title" required>
         </div>
         <div class="form-control">
+          <label for="date_ready">Datum gereed</label>
+          <input type='text' id="date_ready" value="<%= post.date_ready %>" name="date_ready" required
+            maxlength="8"></input>
+        </div>
+        <div class="form-control">
           <label for="summary">Samenvatting</label>
           <input type="text" id="summary" value="<%= post.summary %>" name="summary" required maxlength="255">
         </div>
